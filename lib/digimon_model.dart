@@ -21,14 +21,14 @@ class Digimon {
     HttpClient http = new HttpClient();
     try {
       apiname = name.toLowerCase();
-      var uri = new Uri.https('digimon-api.vercel.app', '/api/digimon/name/$apiname');
+      var uri = new Uri.https('amiiboapi.com', 'api/amiibo/?name=$apiname');
       var request = await http.getUrl(uri);
       var response = await request.close();
       var responseBody = await response.transform(utf8.decoder).join();
 
       List data = json.decode(responseBody);
-      imageUrl = data[0]["img"];
-      levelDigimon = data[0]["level"];
+      imageUrl = data[0]["image"];
+      levelDigimon = data[0]["gameSeries"];
 
       print(levelDigimon);
     } catch (exception) {

@@ -10,10 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My fav Digimons',
+      title: 'My fav Mario characters',
       theme: ThemeData(brightness: Brightness.dark),
       home: MyHomePage(
-        title: 'My fav Digimons',
+        title: 'My fav Mario characters',
       ),
     );
   }
@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Digimon> initialDigimons = []..add(Digimon('Gatomon'))..add(Digimon('Gomamon'))..add(Digimon('Leomon'));
+  List<Digimon> initialDigimons = []..add(Digimon('Mario'))..add(Digimon('Luigi'))..add(Digimon('Peach'));
 
   Future _showNewDigimonForm() async {
     Digimon newDigimon = await Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
