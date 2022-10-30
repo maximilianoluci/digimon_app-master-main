@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Digimon> initialDigimons = []..add(Digimon('Mario'))..add(Digimon('Luigi'))..add(Digimon('Peach'))..add(Digimon('Yoshi'))..add(Digimon('Bowser'));
+  List<Digimon> initialDigimons = []..add(Digimon('Mario'))..add(Digimon('Luigi'))..add(Digimon('Peach'))..add(Digimon('Bowser'))..add(Digimon('Yoshi'))..add(Digimon('Donkey Kong'))..add(Digimon('Wario'));
 
   Future _showNewDigimonForm() async {
     Digimon newDigimon = await Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
