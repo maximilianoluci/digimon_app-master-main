@@ -112,7 +112,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
                   color: const Color(0x1f000000))
             ],
             image: new DecorationImage(
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 image: new NetworkImage(widget.digimon.imageUrl ?? ''))),
       ),
     );

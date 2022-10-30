@@ -29,7 +29,7 @@ class _DigimonCardState extends State<DigimonCard> {
         width: 100.0,
         height: 100.0,
         decoration:
-            new BoxDecoration(shape: BoxShape.circle, image: new DecorationImage(fit: BoxFit.cover, image: new NetworkImage(renderUrl ?? ''))),
+            new BoxDecoration(shape: BoxShape.circle, image: new DecorationImage(fit: BoxFit.contain, image: new NetworkImage(renderUrl ?? ''))),
       ),
     );
 
