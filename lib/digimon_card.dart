@@ -44,7 +44,7 @@ class _DigimonCardState extends State<DigimonCard> {
               colors: [Colors.black54, Colors.black, Colors.blueGrey[600]])),
       alignment: Alignment.center,
       child: new Text(
-        'DIGI',
+        'SMB',
         textAlign: TextAlign.center,
       ),
     );
