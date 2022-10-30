@@ -2,7 +2,6 @@ import 'package:digimon_app/digimon_model.dart';
 import 'digimon_detail_page.dart';
 import 'package:flutter/material.dart';
 
-
 class DigimonCard extends StatefulWidget {
   final Digimon digimon;
 
@@ -39,8 +38,10 @@ class _DigimonCardState extends State<DigimonCard> {
       height: 100.0,
       decoration: new BoxDecoration(
           shape: BoxShape.circle,
-          gradient:
-              new LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Colors.black54, Colors.black, Colors.blueGrey[600]])),
+          gradient: new LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.black54, Colors.black, Colors.blueGrey[600]])),
       alignment: Alignment.center,
       child: new Text(
         'DIGI',
@@ -59,7 +60,7 @@ class _DigimonCardState extends State<DigimonCard> {
   }
 
   void renderDigimonPic() async {
-    await digimon.getImageUrl();
+    await digimon.getDigimonImgUrl();
     if (mounted) {
       setState(() {
         renderUrl = digimon.imageUrl;
@@ -74,7 +75,8 @@ class _DigimonCardState extends State<DigimonCard> {
         width: 290,
         height: 115,
         child: new Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           color: Color(0xFFF8F8F8),
           child: new Padding(
             padding: const EdgeInsets.only(top: 8, bottom: 8, left: 64),
@@ -89,7 +91,9 @@ class _DigimonCardState extends State<DigimonCard> {
                 new Row(
                   children: <Widget>[
                     new Icon(Icons.star, color: Color(0xFF000600)),
-                    new Text(': ${widget.digimon.rating}/10', style: TextStyle(color: Color(0xFF000600), fontSize: 14.0))
+                    new Text(': ${widget.digimon.rating}/10',
+                        style:
+                            TextStyle(color: Color(0xFF000600), fontSize: 14.0))
                   ],
                 )
               ],

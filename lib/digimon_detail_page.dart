@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'digimon_model.dart';
 import 'dart:async';
 
-
 class DigimonDetailPage extends StatefulWidget {
   final Digimon digimon;
   DigimonDetailPage(this.digimon);
@@ -96,11 +95,25 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
         decoration: new BoxDecoration(
             shape: BoxShape.circle,
             boxShadow: [
-              const BoxShadow(offset: const Offset(1.0, 2.0), blurRadius: 2.0, spreadRadius: -1.0, color: const Color(0x33000000)),
-              const BoxShadow(offset: const Offset(2.0, 1.0), blurRadius: 3.0, spreadRadius: 0.0, color: const Color(0x24000000)),
-              const BoxShadow(offset: const Offset(3.0, 1.0), blurRadius: 4.0, spreadRadius: 2.0, color: const Color(0x1f000000))
+              const BoxShadow(
+                  offset: const Offset(1.0, 2.0),
+                  blurRadius: 2.0,
+                  spreadRadius: -1.0,
+                  color: const Color(0x33000000)),
+              const BoxShadow(
+                  offset: const Offset(2.0, 1.0),
+                  blurRadius: 3.0,
+                  spreadRadius: 0.0,
+                  color: const Color(0x24000000)),
+              const BoxShadow(
+                  offset: const Offset(3.0, 1.0),
+                  blurRadius: 4.0,
+                  spreadRadius: 2.0,
+                  color: const Color(0x1f000000))
             ],
-            image: new DecorationImage(fit: BoxFit.cover, image: new NetworkImage(widget.digimon.imageUrl ?? ''))),
+            image: new DecorationImage(
+                fit: BoxFit.cover,
+                image: new NetworkImage(widget.digimon.imageUrl ?? ''))),
       ),
     );
   }
@@ -114,7 +127,8 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
           size: 40.0,
           color: Colors.black,
         ),
-        new Text('${widget.digimon.rating}/10', style: TextStyle(color: Colors.black, fontSize: 30.0))
+        new Text('${widget.digimon.rating}/10',
+            style: TextStyle(color: Colors.black, fontSize: 30.0))
       ],
     );
   }
@@ -129,8 +143,10 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           digimonImage,
-          new Text('${widget.digimon.name}', style: TextStyle(color: Colors.black, fontSize: 32.0)),
-          new Text('${widget.digimon.levelDigimon}', style: TextStyle(color: Colors.black, fontSize: 20.0)),
+          new Text('${widget.digimon.getDigimonName()}',
+              style: TextStyle(color: Colors.black, fontSize: 32.0)),
+          new Text('${widget.digimon.getGameSeries()}',
+              style: TextStyle(color: Colors.black, fontSize: 20.0)),
           Padding(
             padding: EdgeInsets.only(top: 20.0),
             child: rating,
@@ -146,7 +162,7 @@ class _DigimonDetailPageState extends State<DigimonDetailPage> {
       backgroundColor: Color(0xFFABCAED),
       appBar: new AppBar(
         backgroundColor: Color(0xFF0B479E),
-        title: new Text('Meet ${widget.digimon.name}'),
+        title: new Text('Meet ${widget.digimon.getDigimonName()}'),
       ),
       body: new ListView(
         children: <Widget>[digimonProfile, addYourRating],

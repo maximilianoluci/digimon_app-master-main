@@ -2,37 +2,49 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 
-
 class Digimon {
   final String name;
   String imageUrl;
-  String apiname;
-  String levelDigimon;
+  String gameSeries;
 
   int rating = 10;
 
-  Digimon(this.name);
+  Digimon(this.name) {
+    getDigimonData();
+  }
 
-  Future getImageUrl() async {
-    if (imageUrl != null) {
-      return;
-    }
-
+  Future getDigimonData() async {
     HttpClient http = new HttpClient();
     try {
-      apiname = name.toLowerCase();
-      var uri = new Uri.https('amiiboapi.com', 'api/amiibo/?name=$apiname');
+      var queryParams = {'name': this.name.toLowerCase()};
+      var uri = new Uri.https('amiiboapi.com', 'api/amiibo/', queryParams);
       var request = await http.getUrl(uri);
       var response = await request.close();
       var responseBody = await response.transform(utf8.decoder).join();
 
-      List data = json.decode(responseBody);
-      imageUrl = data[0]["image"];
-      levelDigimon = data[0]["gameSeries"];
+      Map<String, dynamic> data = jsonDecode(responseBody);
+      List<dynamic> detailsList = data["amiibo"];
+      imageUrl = detailsList[1]["image"];
+      gameSeries = detailsList[1]["gameSeries"];
 
-      print(levelDigimon);
+      //print(gameSeries);
     } catch (exception) {
       print(exception);
     }
+  }
+
+  String getDigimonName() {
+    return this.name;
+  }
+
+  Future getDigimonImgUrl() async {
+    if (this.imageUrl == null) {
+      await getDigimonData();
+    }
+    return this.imageUrl;
+  }
+
+  String getGameSeries() {
+    return this.gameSeries;
   }
 }
